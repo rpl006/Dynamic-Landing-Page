@@ -1,6 +1,7 @@
 //DOM elements
 
 const time = document.getElementById("time"),
+  todaysDay = document.getElementById("day"),
   greeting = document.getElementById("greeting"),
   name = document.getElementById("name"),
   focus = document.getElementById("focus");
@@ -36,6 +37,45 @@ function showTime() {
 
 function addZero(n) {
   return (parseInt(n, 10) < 10 ? "0" : "") + n;
+}
+
+//Show Date
+
+function showDate() {
+  let today = new Date(),
+    month = today.getMonth(),
+    monthDay = today.getDate(),
+    day = today.getDay(),
+    year = today.getFullYear();
+
+  let weekdays = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
+
+  let months = [
+    "Jan",
+    "Feb",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+
+  todaysDay.innerHTML = `${months[month]} ${monthDay} ${year} (${
+    weekdays[day]
+  })`;
 }
 
 //Set Background Images and greeting
@@ -113,6 +153,7 @@ focus.addEventListener("keypress", setFocus);
 focus.addEventListener("blur", setFocus);
 
 //Run
+showDate();
 showTime();
 setBgGreet();
 getName();
